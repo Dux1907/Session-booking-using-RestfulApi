@@ -1,0 +1,122 @@
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "universityId": "kartik",
+  "password": "kartik12"
+}
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "universityId": "dean",
+  "password": "dean12"
+}
+###
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+  "universityId": "sumit",
+  "password": "sumit12"
+}
+### Student A login - Get token
+POST http://localhost:3000/student/login
+Content-Type: application/json
+
+{
+  "universityId": "kartik",
+  "password": "kartik12"
+}
+### post all sessions
+POST http://localhost:3000/sessions
+Content-Type: application/json
+
+{
+  "date": "2023-06-08",
+  "day": "Thursday",
+  "time": "10AM",
+  "id": 1
+}
+### post all sessions
+POST http://localhost:3000/sessions
+Content-Type: application/json
+
+{
+  "date": "2023-06-09",
+  "day": "Friday",
+  "time": "10AM",
+  "id": 2
+}
+### post all sessions
+POST http://localhost:3000/sessions
+Content-Type: application/json
+
+{
+  "date": "2023-06-15",
+  "day": "Thursday",
+  "time": "10AM",
+  "id": 3
+}
+### post all sessions
+POST http://localhost:3000/sessions
+Content-Type: application/json
+
+{
+  "date": "2023-06-16",
+  "day": "Friday",
+  "time": "10AM",
+  "id": 4
+}
+### Student A view available sessions with the dean
+GET http://localhost:3000/student/sessions
+Authorization: Bearer 7eadf8d9-929c-46ce-8805-352a93d61f35
+
+### Student A book a session with the dean
+POST http://localhost:3000/student/book-session
+Content-Type: application/json
+Authorization: Bearer 7eadf8d9-929c-46ce-8805-352a93d61f35
+
+{
+  "sessionId": 2
+}
+
+### Dean login - Get token
+POST http://localhost:3000/dean/login
+Content-Type: application/json
+
+{
+  "universityId": "dean",
+  "password": "dean12"
+}
+
+### Dean view all pending sessions
+GET http://localhost:3000/dean/pending-sessions
+Authorization: Bearer 566f3afa-7c43-4180-aa6b-57c0da4e7a8c
+
+### Student B login - Get token
+POST http://localhost:3000/student/login
+Content-Type: application/json
+
+{
+  "universityId": "sumit",
+  "password": "sumit12"
+}
+
+### Student B view available sessions with the dean
+GET http://localhost:3000/student/sessions
+Authorization: Bearer 37afd77b-573d-4df8-9af7-e12f1fe40327
+
+### Student B book a session with the dean
+POST http://localhost:3000/student/book-session
+Content-Type: application/json
+Authorization: Bearer 37afd77b-573d-4df8-9af7-e12f1fe40327
+
+{
+  "sessionId": "3"
+}
+
+### Dean view all pending sessions again
+GET http://localhost:3000/dean/pending-sessions
+Authorization: Bearer 566f3afa-7c43-4180-aa6b-57c0da4e7a8c
